@@ -14,6 +14,10 @@ public class Conta {
     }
     
     public Conta(String nomeCliente, String numeroConta, double tipoInterese, double saldo){
+        this.nomeCliente = nomeCliente;
+        this.numeroConta = numeroConta;
+        this.tipoInterese = tipoInterese;
+        this.saldo = saldo;
         
     }
     
@@ -46,20 +50,21 @@ public class Conta {
     }
     
     //metodos ingreso e reintegro
-    public void ingresoSaldo(double ingreso){
+    public double ingresoSaldo(double ingreso){
         if(ingreso >= 0){
-            this.saldo = saldo + ingreso;
-            System.out.println("saldo = " + saldo);
+            this.saldo = ingreso + this.saldo;
+        } else {
+        System.out.println("Numero incorrecto, introduce un numero positivo");
         }
-        System.out.println("Introduce un numero positivo");
-        
+        return this.saldo;
     }
-    public void reintegroSaldo(double reintegro){
+    public double reintegroSaldo(double reintegro){
         if (reintegro >= 0){
-            this.saldo = saldo + reintegro;
-            System.out.println("saldo = " + saldo);
+            this.saldo =  this.saldo - reintegro;
+        } else {
+        System.out.println("Numero incorrecto, introduce un numero positivo");
         }
-        System.out.println("Introduce un numero positivo");
+        return this.saldo;
     }
     
     //metodo transferencia
@@ -67,7 +72,6 @@ public class Conta {
         this.nomeCliente = cuentaDestinoNome;
         this.numeroConta = cuentaDestinoNumero;
         this.saldo = importe;
-        
     }
     
 }
